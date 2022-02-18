@@ -29,7 +29,7 @@ jobs:
         env:
             DB_MAIN_TEST_USERNAME: ${{ secrets.DB_MAIN_TEST_USERNAME }}
             DB_MAIN_TEST_PASSWORD: ${{ secrets.DB_MAIN_TEST_PASSWORD }}
-        run: env    
+        run: env | sort -f    
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
