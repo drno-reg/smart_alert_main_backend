@@ -25,6 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Run test
+        env:
+            DB_MAIN_TEST_USERNAME: ${{ secrets.DB_MAIN_TEST_USERNAME }}
+            DB_MAIN_TEST_PASSWORD: ${{ secrets.DB_MAIN_TEST_PASSWORD }}
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
