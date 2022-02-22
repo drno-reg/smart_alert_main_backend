@@ -19,7 +19,20 @@ docker run --rm --name=smart_alert_main_backend_local \
 ```bash
 docker logs -f --tail 10 smart_alert_main_backend_local
 ```
+Для настройки логов создаем файл
+/etc/docker/daemon.json
+```bash
+{
+"log-driver": "json-file",
+"log-opts": {"max-size": "10m", "max-file": "3"}
+}
+```
 
+Удаляем неиспользуемые Docker Images
+
+```bash
+docker rmi $(docker images -a -q)
+```
 
 в ansible playbook:
 
