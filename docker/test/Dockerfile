@@ -11,9 +11,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 #change timezone on Moskow
-ENV TZ=Europe/Moscow
-RUN apk update && apk add --no-cache --virtual tzdata
+#ENV TZ=Europe/Moscow
+#RUN apk update && apk add --no-cache --virtual tzdata
 #RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+#change timezone on Moskow
+ENV TZ=Europe/Moscow
+RUN apk update add tzdata && cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && apk del tzdata
+
 
 # copy requirements file
 

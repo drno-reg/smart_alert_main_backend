@@ -13,6 +13,8 @@ from sqlalchemy.sql import func
 
 from databases import Database
 
+# DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
+
 DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 # SQLAlchemy
@@ -28,4 +30,5 @@ notes = Table(
 )
 
 # databases query builder
+#
 database = Database(DATABASE_URL)
