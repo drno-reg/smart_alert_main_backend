@@ -1,4 +1,4 @@
-# pull official base image
+    # pull official base image
 FROM python:3.9.4-alpine
 
 # set work directory
@@ -16,9 +16,11 @@ ENV PYTHONUNBUFFERED 1
 #RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #change timezone on Moskow
-ENV TZ=Europe/Moscow
-RUN apk update add tzdata && cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && apk del tzdata
+#ENV TZ=Europe/Moscow
+#RUN apk update add tzdata && cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && apk del tzdata
 
+RUN apk update && apk add tzdata
+ENV TZ=Europe/Moscow
 
 # copy requirements file
 

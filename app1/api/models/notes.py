@@ -1,5 +1,3 @@
-import os
-
 from sqlalchemy import (
     Column,
     DateTime,
@@ -11,15 +9,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.sql import func
 
-from databases import Database
+# # databases query builder
+from app1.config.db import metadata
 
-# DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
+# metadata = MetaData()
 
-DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
-
-# SQLAlchemy
-engine = create_engine(DATABASE_URL)
-metadata = MetaData()
 notes = Table(
     "notes",
     metadata,
@@ -28,7 +22,4 @@ notes = Table(
     Column("description", String(50)),
     Column("created_date", DateTime, default=func.now(), nullable=False),
 )
-
-# databases query builder
 #
-database = Database(DATABASE_URL)

@@ -1,5 +1,6 @@
-from app.api.models import NoteSchema
-from app.db import notes, database
+from app1.api.schemas.note import NoteSchema
+from app1.config.db import database
+from app1.api.models.notes import notes
 
 
 async def post(payload: NoteSchema):
@@ -22,7 +23,8 @@ async def put(id: int, payload: NoteSchema):
         notes
             .update()
             .where(id == notes.c.id)
-            .values(title=payload.title, description=payload.description)
+            .values(title=payload.title,
+                    description=payload.description)
             .returning(notes.c.id)
     )
     return await database.execute(query=query)
